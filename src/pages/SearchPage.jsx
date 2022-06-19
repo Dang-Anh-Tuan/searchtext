@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import SearchBox from "../components/SearchBox/SearchBox";
 import SearchResult from "../components/SearchResult/SearchResult";
 
@@ -97,6 +97,7 @@ const fakeListResult = [
 
 function SearchPage() {
   const [resultSearch, setResultSearch] = useState([]);
+
 
   useLayoutEffect(() => {
     setResultSearch(fakeListResult);

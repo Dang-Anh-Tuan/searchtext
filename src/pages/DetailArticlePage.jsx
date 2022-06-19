@@ -1,10 +1,16 @@
+import { useContext } from "react";
 import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
-import { useParams } from "react-router-dom";
+import { ArticleContext } from "../context/ArticleContext";
 
 function DetailArticlePage() {
-  const { id } = useParams();
+  const context = useContext(ArticleContext);
+  const article = context.articleDetail;
 
-  const docs = [{ uri: require(`../static/science/science-${id}.docx`) }];
+  const docs = [
+    {
+      uri: require(`../static/${article.folderName}/${article.fileName}.docx`),
+    },
+  ];
 
   return (
     <div>
