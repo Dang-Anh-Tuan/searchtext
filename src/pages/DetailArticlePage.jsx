@@ -6,6 +6,8 @@ function DetailArticlePage() {
   const context = useContext(ArticleContext);
   const article = context.articleDetail;
 
+  console.log(article);
+  
   const docs = [
     {
       uri: require(`../static/${article.folderName}/${article.fileName}.docx`),
