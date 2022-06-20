@@ -1,110 +1,25 @@
 import { useLayoutEffect, useState } from "react";
+import searchApi from "../api/Search.api";
 import SearchBox from "../components/SearchBox/SearchBox";
 import SearchResult from "../components/SearchResult/SearchResult";
-
-const fakeListResult = [
-  {
-    id: 1,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-  {
-    id: 2,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-  {
-    id: 3,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-  {
-    id: 4,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-  {
-    id: 1,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-  {
-    id: 1,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-  {
-    id: 1,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-  {
-    id: 1,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-  {
-    id: 1,
-    title:
-      "House Republicans Fret About Winning Their Health Care Suit - The New York Times",
-    author: "Carl Hulse",
-    publishYear: 2016,
-    category: "news",
-    fileName: "news-1",
-    folderName: "news",
-  },
-];
 
 function SearchPage() {
   const [resultSearch, setResultSearch] = useState([]);
 
+  const handleSearch = async (input) => {
+    try {
+      console.log(input);
+      const result = await  searchApi.findSimilarDoc(input)
+      console.log(result);
+      setResultSearch(result)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  useLayoutEffect(() => {
-    setResultSearch(fakeListResult);
-  }, []);
   return (
     <div>
-      <SearchBox />
+      <SearchBox handleSearch={handleSearch}/>
       <SearchResult resultSearch={resultSearch} />
     </div>
   );

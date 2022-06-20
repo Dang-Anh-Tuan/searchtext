@@ -6,6 +6,7 @@ function ArticleProvider({ children }) {
   const [articleDetail, setArticleDetail] = useState(null);
 
   const selectArticle = (article) => {
+    console.log(article);
     setArticleDetail(article);
   };
 

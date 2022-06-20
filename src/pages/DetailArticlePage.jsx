@@ -5,12 +5,12 @@ import { ArticleContext } from "../context/ArticleContext";
 function DetailArticlePage() {
   const context = useContext(ArticleContext);
   const article = context.articleDetail;
-
+  const folderName = article.fileName.split("-")[0];
   console.log(article);
-  
+
   const docs = [
     {
-      uri: require(`../static/${article.folderName}/${article.fileName}.docx`),
+      uri: require(`../static/${folderName}/${article.fileName}.docx`),
     },
   ];
 
